@@ -1,42 +1,70 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buat Post Baru</title>
+    <title>Buat Post Baru - Zah Dev</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <!-- ... (salin <nav> lagi) ... -->
-    <main class="post-container">
-        <h2>Buat Postingan Baru</h2>
-        <!-- TIDAK PERLU enctype="multipart/form-data" -->
-        <form action="/new" method="POST" class="post-form">
-            <div class="form-group">
-                <label for="title">Judul</label>
-                <input type="text" id="title" name="title" required>
+
+    <!-- NAVBAR (Sama seperti di index.ejs) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">Zah Dev</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#posts">Postingan</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/new">Buat Post</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <span class="navbar-text me-3" title="Total Pengunjung">
+                        <i class="fas fa-eye me-1"></i> <%= visitorCount.toLocaleString('id-ID') %>
+                    </span>
+                    <form class="d-flex" role="search">
+                        <input class="form-control form-control-sm me-2" type="search" placeholder="Cari..." aria-label="Search">
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="content">Isi Konten</label>
-                <textarea id="content" name="content" rows="10" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="imageUrl">URL Gambar dari GitHub (Opsional)</label>
-                <input type="url" id="imageUrl" name="imageUrl" placeholder="https://raw.githubusercontent.com/...">
-            </div>
-            <div class="form-group">
-                <label for="videoUrl">URL Video dari GitHub (Opsional)</label>
-                <input type="url" id="videoUrl" name="videoUrl" placeholder="https://raw.githubusercontent.com/...">
-            </div>
-            <button type="submit" class="btn">Publikasikan</button>
-        </form>
+        </div>
+    </nav>
+
+    <!-- FORM KONTEN -->
+    <main class="container py-5 form-container">
+        <h2 class="text-center mb-4">Buat Postingan Baru</h2>
+        <div class="card p-4 p-md-5">
+            <form action="/new" method="POST">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Judul Postingan</label>
+                    <input type="text" class="form-control" id="title" name="title" required>
+                </div>
+                <div class="mb-3">
+                    <label for="content" class="form-label">Isi Konten</label>
+                    <textarea class="form-control" id="content" name="content" rows="10" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="imageUrl" class="form-label">URL Gambar (dari GitHub Raw)</label>
+                    <input type="url" class="form-control" id="imageUrl" name="imageUrl" placeholder="https://raw.githubusercontent.com/...">
+                </div>
+                <div class="mb-3">
+                    <label for="videoUrl" class="form-label">URL Video (Opsional)</label>
+                    <input type="url" class="form-control" id="videoUrl" name="videoUrl" placeholder="https://raw.githubusercontent.com/...">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Publikasikan</button>
+            </form>
+        </div>
     </main>
-    <!-- ... (salin <footer> lagi) ... -->
-    <style>
-        .post-form { background: var(--card-bg); padding: 30px; border-radius: 8px; box-shadow: 0 4px 20px var(--shadow-color); }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-color); color: var(--text-color); box-sizing: border-box; }
-    </style>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

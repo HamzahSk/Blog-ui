@@ -1,87 +1,88 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zah Dev - Blog Teknologi & Bot</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <!-- Font Awesome untuk Ikon Media Sosial -->
+    <title>Zah Dev - Blog Teknologi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome untuk Ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
-<body class="light-mode">
+<body>
 
     <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="/" class="nav-brand">Zah Dev</a>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="#posts">Postingan</a></li>
-                <li><a href="#contact">Kontak</a></li>
-            </ul>
-            <div class="theme-switch-wrapper">
-                <label class="theme-switch" for="checkbox">
-                    <input type="checkbox" id="checkbox" />
-                    <div class="slider round"></div>
-                </label>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">Zah Dev</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#posts">Postingan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/new">Buat Post</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <span class="navbar-text me-3" title="Total Pengunjung">
+                        <i class="fas fa-eye me-1"></i> <%= visitorCount.toLocaleString('id-ID') %>
+                    </span>
+                    <form class="d-flex" role="search">
+                        <input class="form-control form-control-sm me-2" type="search" placeholder="Cari..." aria-label="Search">
+                    </form>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION UTAMA -->
-    <header class="hero-main">
-        <div class="hero-content">
-            <h1>Web Blog Zah Dev</h1>
-            <p>Berisi informasi seputar teknologi, pengembangan bot, tutorial, dan catatan pribadi.</p>
-            <a href="#posts" class="btn hero-btn">Lihat Postingan</a>
+    <!-- HERO SECTION -->
+    <header class="hero-section d-flex align-items-center justify-content-center text-center">
+        <div class="container">
+            <h1 class="display-3 fw-bold">Welcome to Zah Dev</h1>
+            <p class="lead col-lg-6 mx-auto">Blog seputar teknologi, programming, pengembangan bot, dan tutorial bermanfaat lainnya.</p>
+            <a href="#posts" class="btn btn-primary btn-lg mt-3">Lihat Postingan</a>
         </div>
     </header>
 
-    <!-- KONTAINER POSTINGAN -->
-    <main id="posts" class="post-container">
-        <h2 class="section-title">Postingan Terbaru</h2>
-        <% if (posts.length > 0) { %>
-            <% posts.forEach(post => { %>
-                <article class="post animate-on-scroll">
-                    <% if (post.imageUrl) { %>
-                        <img src="<%= post.imageUrl %>" alt="Gambar Postingan">
-                    <% } %>
-                    <% if (post.videoUrl) { %>
-                        <video width="100%" controls>
-                            <source src="<%= post.videoUrl %>" type="video/mp4">
-                            Browser Anda tidak mendukung tag video.
-                        </video>
-                    <% } %>
-                    <div class="post-content">
-                        <h3><%= post.title %></h3>
-                        <p class="meta">Dipublikasikan pada <%= new Date(post.createdAt).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }) %></p>
-                        <p><%- post.content.substring(0, 150) %>...</p>
-                        <a href="#" class="btn">Baca Selengkapnya</a>
-                    </div>
-                </article>
-            <% }) %>
-        <% } else { %>
-            <p style="text-align: center; margin-top: 40px;">Belum ada postingan. Ayo buat yang pertama!</p>
-        <% } %>
-    </main>
-    
-    <!-- BAGIAN KONTAK -->
-    <section id="contact" class="contact-section">
-        <h2 class="section-title">Hubungi Saya</h2>
-        <p>Mari terhubung di media sosial lain!</p>
-        <div class="social-links">
-            <a href="https://github.com/HamzahSk" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+    <!-- KONTEN POSTINGAN -->
+    <main id="posts" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title"><span>Postingan Terbaru</span></h2>
+            <div class="row g-4">
+                <% if (posts.length > 0) { %>
+                    <% posts.forEach(post => { %>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card h-100 shadow-sm post-card">
+                                <% if (post.imageUrl) { %>
+                                    <img src="<%= post.imageUrl %>" class="card-img-top" alt="Post Image">
+                                <% } %>
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title"><%= post.title %></h5>
+                                    <p class="card-text text-white-50 small"><%= new Date(post.createdAt).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) %></p>
+                                    <p class="card-text flex-grow-1"><%- post.content.substring(0, 100) %>...</p>
+                                    <a href="#" class="btn btn-outline-primary mt-auto">Baca Selengkapnya</a>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p class="text-center">Belum ada postingan.</p>
+                <% } %>
+            </div>
         </div>
-    </section>
+    </main>
 
     <!-- FOOTER -->
-    <footer>
-        <p>&copy; <%= new Date().getFullYear() %> Zah Dev. Dibuat dengan Node.js & Cinta.</p>
+    <footer class="bg-dark text-white-50 text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy; <%= new Date().getFullYear() %> Zah Dev. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script src="/static/js/script.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
