@@ -3,39 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Dinamis</title>
+    <title>Zah Dev - Blog Teknologi & Bot</title>
     <link rel="stylesheet" href="/static/css/style.css">
+    <!-- Font Awesome untuk Ikon Media Sosial -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
-<body>
-    <!-- ... (salin <nav> dan <header> dari respons sebelumnya) ... -->
-    <main class="post-container">
-        <% posts.forEach(post => { %>
-            <article class="post animate-on-scroll">
-                
-                <% if (post.imageUrl) { %>
-                    <img src="<%= post.imageUrl %>" alt="Gambar Postingan">
-                <% } %>
-                
-                <% if (post.videoUrl) { %>
-                    <video width="100%" controls>
-                        <source src="<%= post.videoUrl %>" type="video/mp4">
-                        Browser Anda tidak mendukung tag video.
-                    </video>
-                <% } %>
-                
-                <div class="post-content">
-                    <h3><%= post.title %></h3>
-                    <p class="meta">Dipublikasikan pada <%= new Date(post.createdAt).toLocaleDateString('id-ID') %></p>
-                    <p><%- post.content.replace(/\n/g, '<br>') %></p>
-                    <a href="#" class="btn">Baca Selengkapnya</a>
-                </div>
-            </article>
-        <% }) %>
-        <% if (posts.length === 0) { %>
-            <p style="text-align: center;">Belum ada postingan. <a href="/new">Buat satu sekarang!</a></p>
+<body class="light-mode">
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-brand">Zah Dev</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#posts">Postingan</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION UTAMA -->
+    <header class="hero-main">
+        <div class="hero-content">
+            <h1>Web Blog Zah Dev</h1>
+            <p>Berisi informasi seputar teknologi, pengembangan bot, tutorial, dan catatan pribadi.</p>
+            <a href="#posts" class="btn hero-btn">Lihat Postingan</a>
+        </div>
+    </header>
+
+    <!-- KONTAINER POSTINGAN -->
+    <main id="posts" class="post-container">
+        <h2 class="section-title">Postingan Terbaru</h2>
+        <% if (posts.length > 0) { %>
+            <% posts.forEach(post => { %>
+                <article class="post animate-on-scroll">
+                    <% if (post.imageUrl) { %>
+                        <img src="<%= post.imageUrl %>" alt="Gambar Postingan">
+                    <% } %>
+                    <% if (post.videoUrl) { %>
+                        <video width="100%" controls>
+                            <source src="<%= post.videoUrl %>" type="video/mp4">
+                            Browser Anda tidak mendukung tag video.
+                        </video>
+                    <% } %>
+                    <div class="post-content">
+                        <h3><%= post.title %></h3>
+                        <p class="meta">Dipublikasikan pada <%= new Date(post.createdAt).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }) %></p>
+                        <p><%- post.content.substring(0, 150) %>...</p>
+                        <a href="#" class="btn">Baca Selengkapnya</a>
+                    </div>
+                </article>
+            <% }) %>
+        <% } else { %>
+            <p style="text-align: center; margin-top: 40px;">Belum ada postingan. Ayo buat yang pertama!</p>
         <% } %>
     </main>
-    <!-- ... (salin <footer> lagi) ... -->
+    
+    <!-- BAGIAN KONTAK -->
+    <section id="contact" class="contact-section">
+        <h2 class="section-title">Hubungi Saya</h2>
+        <p>Mari terhubung di media sosial lain!</p>
+        <div class="social-links">
+            <a href="https://github.com/HamzahSk" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; <%= new Date().getFullYear() %> Zah Dev. Dibuat dengan Node.js & Cinta.</p>
+    </footer>
+
     <script src="/static/js/script.js"></script>
 </body>
 </html>
