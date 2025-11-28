@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Dinamis</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- ... (salin <nav> dan <header> dari respons sebelumnya) ... -->
+    <main class="post-container">
+        <% posts.forEach(post => { %>
+            <article class="post animate-on-scroll">
+                
+                <% if (post.imageUrl) { %>
+                    <img src="<%= post.imageUrl %>" alt="Gambar Postingan">
+                <% } %>
+                
+                <% if (post.videoUrl) { %>
+                    <video width="100%" controls>
+                        <source src="<%= post.videoUrl %>" type="video/mp4">
+                        Browser Anda tidak mendukung tag video.
+                    </video>
+                <% } %>
+                
+                <div class="post-content">
+                    <h3><%= post.title %></h3>
+                    <p class="meta">Dipublikasikan pada <%= new Date(post.createdAt).toLocaleDateString('id-ID') %></p>
+                    <p><%- post.content.replace(/\n/g, '<br>') %></p>
+                    <a href="#" class="btn">Baca Selengkapnya</a>
+                </div>
+            </article>
+        <% }) %>
+        <% if (posts.length === 0) { %>
+            <p style="text-align: center;">Belum ada postingan. <a href="/new">Buat satu sekarang!</a></p>
+        <% } %>
+    </main>
+    <!-- ... (salin <footer> lagi) ... -->
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
