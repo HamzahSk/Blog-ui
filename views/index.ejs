@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html lang="id" data-bs-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zah Dev - Blog Teknologi</title>
-    <!-- Bootstrap CSS -->
+    <!-- ... (Bagian <head> tetap sama) ... -->
+    <title>Zah Dev - Blog Teknologi & Bot</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome untuk Ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-
-    <!-- NAVBAR -->
+    <!-- ... (Navbar dan Hero Section tetap sama) ... -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="/">Zah Dev</a>
@@ -37,17 +32,88 @@
             </div>
         </div>
     </nav>
-
-    <!-- HERO SECTION -->
     <header class="hero-section d-flex align-items-center justify-content-center text-center">
         <div class="container">
-            <h1 class="display-3 fw-bold">Welcome to Zah Dev</h1>
-            <p class="lead col-lg-6 mx-auto">Blog seputar teknologi, programming, pengembangan bot, dan tutorial bermanfaat lainnya.</p>
-            <a href="#posts" class="btn btn-primary btn-lg mt-3">Lihat Postingan</a>
+            <h1 class="display-3 fw-bold">Menjelajahi Dunia Kode Bersama Zah Dev</h1>
+            <p class="lead col-lg-8 mx-auto">
+                Dari <span id="typing-effect"></span>
+            </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-4">
+                <a href="#posts" class="btn btn-primary btn-lg px-4 gap-3">Lihat Postingan</a>
+                <a href="https://github.com/HamzahSk" target="_blank" class="btn btn-outline-secondary btn-lg px-4">Lihat GitHub</a>
+            </div>
         </div>
     </header>
 
-    <!-- KONTEN POSTINGAN -->
+
+    <!-- ... (Bagian "Fokus Utama" tetap sama) ... -->
+    <section class="features-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title"><span>Fokus Utama</span></h2>
+            <div class="row g-4 text-center">
+                <!-- Kolom 1: Bot Development -->
+                <div class="col-lg-4">
+                    <div class="feature-card h-100 p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4 class="fw-bold">Pengembangan Bot</h4>
+                        <p>Pelajari cara membuat bot untuk berbagai platform, dari dasar hingga tingkat lanjut.</p>
+                    </div>
+                </div>
+                <!-- Kolom 2: Web Development -->
+                <div class="col-lg-4">
+                    <div class="feature-card h-100 p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4 class="fw-bold">Tutorial Web Dev</h4>
+                        <p>Panduan langkah demi langkah tentang teknologi web modern seperti Node.js, Express, dan lainnya.</p>
+                    </div>
+                </div>
+                <!-- Kolom 3: Catatan Teknologi -->
+                <div class="col-lg-4">
+                    <div class="feature-card h-100 p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4 class="fw-bold">Catatan Teknologi</h4>
+                        <p>Ulasan, opini, dan catatan singkat seputar tren terbaru di dunia software development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==== SEKSI BARU: KONTEN ACAK ==== -->
+    <section class="random-content-section bg-dark-subtle py-5">
+        <div class="container">
+            <h2 class="text-center mb-4 section-title"><span>Secuil Hiburan</span></h2>
+            <% if (randomContent) { %>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="random-content-box p-4">
+                            <div class="random-content-header d-flex align-items-center mb-3">
+                                <% if (randomContent.type === 'Fakta Menarik') { %>
+                                    <i class="fas fa-lightbulb me-2"></i>
+                                <% } else if (randomContent.type.includes('Pantun')) { %>
+                                    <i class="fas fa-comment-dots me-2"></i>
+                                <% } else { %>
+                                    <i class="fas fa-quote-left me-2"></i>
+                                <% } %>
+                                <span class="fw-bold"><%= randomContent.type %></span>
+                            </div>
+                            <blockquote class="blockquote mb-0">
+                                <p><%- randomContent.text.replace(/\n/g, '<br>') %></p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </section>
+
+    <!-- ... (Bagian Postingan Terbaru dan Footer tetap sama) ... -->
     <main id="posts" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5 section-title"><span>Postingan Terbaru</span></h2>
@@ -74,15 +140,26 @@
             </div>
         </div>
     </main>
-
-    <!-- FOOTER -->
     <footer class="bg-dark text-white-50 text-center py-4">
         <div class="container">
             <p class="mb-0">&copy; <%= new Date().getFullYear() %> Zah Dev. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
+
+    <!-- ... (Bagian script tetap sama) ... -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var typed = new Typed('#typing-effect', {
+                strings: ['Pengembangan Bot.', 'Tutorial Web Development.', 'Tips & Trik Koding.', 'Ulasan Teknologi Terbaru.'],
+                typeSpeed: 50,
+                backSpeed: 25,
+                backDelay: 2000,
+                loop: true
+            });
+        });
+    </script>
 </body>
 </html>
