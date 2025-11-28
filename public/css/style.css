@@ -48,3 +48,67 @@ body {
 .form-container {
     padding-top: 50px;
 }
+
+/* ... (CSS Anda yang sudah ada dari sebelumnya) ... */
+
+/* Bagian baru untuk ditambahkan di bawah */
+
+/* Styling untuk bagian kolom 'Fokus Utama' */
+.features-section {
+    background-color: var(--bs-body-bg); /* Warna latar yang konsisten */
+}
+
+.feature-card {
+    background-color: var(--bs-tertiary-bg);
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.5rem;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--bs-primary);
+}
+
+/* Penyesuaian agar main content tidak terlalu menempel */
+main#posts {
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+}
+
+/* Styling untuk kursor efek mengetik */
+.typed-cursor {
+    color: var(--bs-primary);
+    font-size: 1.2rem;
+}
+
+
+/* ... (CSS Anda yang sudah ada dari sebelumnya) ... */
+
+/* ==== GAYA BARU UNTUK KONTEN ACAK ==== */
+.random-content-box {
+    background: var(--bs-tertiary-bg);
+    border: 1px solid var(--bs-border-color);
+    border-left: 5px solid var(--bs-primary);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.random-content-header {
+    color: var(--bs-primary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.random-content-box blockquote p {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--bs-body-color);
+}
+
