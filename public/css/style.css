@@ -1,201 +1,50 @@
-/* -- Root Variables (Tema Terang) -- */
-:root {
-    --bg-color: #f4f7f9;
-    --text-color: #333;
-    --card-bg: #ffffff;
-    --border-color: #e0e0e0;
-    --primary-color: #007BFF;
-    --primary-hover: #0056b3;
-    --dark-bg: #1a1a1a;
-    --light-text: #f4f7f9;
-    --shadow-color: rgba(0, 0, 0, 0.08);
-}
-
-/* -- Tema Gelap -- */
-body.dark-mode {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --card-bg: #1e1e1e;
-    --border-color: #333;
-    --primary-color: #4dabf7;
-    --primary-hover: #74c0fc;
-    --dark-bg: #1a1a1a;
-    --shadow-color: rgba(0, 0, 0, 0.2);
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
+/* Pastikan body memiliki padding atas untuk menghindari konten tertutup navbar */
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    transition: background-color 0.3s, color 0.3s;
+    padding-top: 70px; 
 }
 
-/* -- Navbar -- */
-.navbar {
-    background-color: rgba(26, 26, 26, 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #333;
-    padding: 0 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    height: 70px;
-}
-
-.nav-brand {
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: #fff;
-    text-decoration: none;
-}
-
-.nav-links { list-style: none; display: flex; gap: 2rem; margin: 0; }
-.nav-links a { text-decoration: none; color: var(--light-text); font-weight: 500; transition: color 0.2s; }
-.nav-links a:hover { color: var(--primary-color); }
-
-/* -- Hero Section Utama -- */
-.hero-main {
-    background: var(--dark-bg);
-    color: var(--light-text);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+/* Hero Section Styling */
+.hero-section {
+    background-color: #212529; /* Warna bg-dark bootstrap */
     height: 60vh;
-    padding: 0 20px;
+    min-height: 400px;
 }
 
-.hero-main h1 {
-    font-family: 'Lora', serif;
-    font-size: 3.5rem;
-    margin: 0;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-.hero-main p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 15px 0 30px 0;
-    color: #ccc;
-}
-
-.hero-btn {
-    padding: 15px 35px;
-    font-size: 1rem;
-    background-color: var(--primary-color);
-}
-.hero-btn:hover {
-    background-color: var(--primary-hover);
-    transform: scale(1.05);
-}
-
-/* -- Konten & Postingan -- */
-.post-container {
-    max-width: 850px;
-    margin: 50px auto;
-    padding: 20px;
-}
-
+/* Styling untuk judul seksi "Postingan Terbaru" */
 .section-title {
-    text-align: center;
-    font-family: 'Lora', serif;
-    font-size: 2.5rem;
-    margin-bottom: 50px;
     position: relative;
+    padding-bottom: 10px;
 }
-.section-title::after {
+
+.section-title span::after {
     content: '';
+    position: absolute;
     display: block;
-    width: 60px;
+    width: 50px;
     height: 3px;
-    background: var(--primary-color);
-    margin: 10px auto 0;
+    background: var(--bs-primary);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.post {
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    margin-bottom: 40px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px var(--shadow-color);
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 1px solid var(--border-color);
-}
-.post:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px var(--shadow-color);
-}
-/* ... (sisa style post, meta, btn tetap sama dari sebelumnya) ... */
-.post img, .post video { width: 100%; height: auto; max-height: 450px; object-fit: cover; display: block; border-bottom: 1px solid var(--border-color); }
-.post-content { padding: 30px; }
-.post-content h3 { font-family: 'Lora', serif; font-size: 1.8rem; margin: 0 0 10px 0; }
-.meta { color: #888; font-size: 0.9rem; margin-bottom: 20px; }
-.btn { display: inline-block; background-color: var(--primary-color); color: #fff; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 15px; transition: background-color 0.2s, transform 0.2s; }
-.btn:hover { background-color: var(--primary-hover); transform: scale(1.02); }
-
-/* -- Contact Section -- */
-.contact-section {
-    background-color: var(--card-bg);
-    padding: 60px 20px;
-    text-align: center;
-    border-top: 1px solid var(--border-color);
+/* Penyesuaian Kartu Postingan */
+.post-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 1px solid var(--bs-border-color);
 }
 
-.social-links {
-    margin-top: 20px;
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
-.social-links a {
-    color: var(--text-color);
-    font-size: 2rem;
-    margin: 0 15px;
-    transition: color 0.3s, transform 0.3s;
-    display: inline-block;
+.post-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
 }
 
-.social-links a:hover {
-    color: var(--primary-color);
-    transform: scale(1.2);
-}
-
-/* -- Footer -- */
-footer {
-    background: var(--dark-bg);
-    color: #aaa;
-    text-align: center;
-    padding: 2rem;
-}
-
-/* ... (Animasi Scroll & Dark Mode Toggle tetap sama) ... */
-.animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-.animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
-.theme-switch-wrapper { display: flex; align-items: center; }
-.theme-switch { display: inline-block; height: 24px; position: relative; width: 50px; }
-.theme-switch input { display: none; }
-.slider { background-color: #ccc; bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0; transition: .4s; }
-.slider:before { background-color: #fff; bottom: 2px; content: ""; height: 20px; left: 3px; position: absolute; transition: .4s; width: 20px; }
-input:checked + .slider { background-color: #fff; }
-input:checked + .slider:before { background-color: #222; transform: translateX(25px); }
-.slider.round { border-radius: 34px; }
-.slider.round:before { border-radius: 50%; }
-
-/* -- Responsiveness -- */
-@media (max-width: 768px) {
-    .nav-links { display: none; } /* Sembunyikan link untuk mobile, bisa dikembangkan jadi menu hamburger */
-    .hero-main h1 { font-size: 2.5rem; }
-    .hero-main p { font-size: 1rem; }
+/* Penyesuaian container form */
+.form-container {
+    padding-top: 50px;
 }
