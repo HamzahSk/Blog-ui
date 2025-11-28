@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat Post Baru</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- ... (salin <nav> lagi) ... -->
+    <main class="post-container">
+        <h2>Buat Postingan Baru</h2>
+        <!-- TIDAK PERLU enctype="multipart/form-data" -->
+        <form action="/new" method="POST" class="post-form">
+            <div class="form-group">
+                <label for="title">Judul</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="content">Isi Konten</label>
+                <textarea id="content" name="content" rows="10" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="imageUrl">URL Gambar dari GitHub (Opsional)</label>
+                <input type="url" id="imageUrl" name="imageUrl" placeholder="https://raw.githubusercontent.com/...">
+            </div>
+            <div class="form-group">
+                <label for="videoUrl">URL Video dari GitHub (Opsional)</label>
+                <input type="url" id="videoUrl" name="videoUrl" placeholder="https://raw.githubusercontent.com/...">
+            </div>
+            <button type="submit" class="btn">Publikasikan</button>
+        </form>
+    </main>
+    <!-- ... (salin <footer> lagi) ... -->
+    <style>
+        .post-form { background: var(--card-bg); padding: 30px; border-radius: 8px; box-shadow: 0 4px 20px var(--shadow-color); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-color); color: var(--text-color); box-sizing: border-box; }
+    </style>
+</body>
+</html>
